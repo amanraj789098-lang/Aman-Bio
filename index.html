@@ -177,18 +177,55 @@
 </div>
 
 <script>
-  const video = document.getElementById("bg-video");
-  const poster = document.getElementById("videoPoster");
-  const overlay = document.getElementById("playOverlay");
-  const playBtn = document.getElementById("playBtn");
+  (function(){
+    const video = document.getElementById("bg-video");
+    const poster = document.getElementById("videoPoster");
+    const overlay = document.getElementById("playOverlay");
+    const playBtn = document.getElementById("playBtn");
 
-  playBtn.addEventListener("click", () => {
-    video.style.display = "block";
-    video.play();
-    overlay.style.display = "none";
-    poster.style.display = "none";
-  });
+    // ensure attributes that help mobile autoplay/gesture
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('muted','');
+    video.setAttribute('playsinline','');
+
+    function tryPlay() {
+      // make video visible first
+      video.style.display = "block";
+      // reload source to make sure browser recognises it
+      try { video.load(); } catch(e){}
+      return video.play()
+        .then(() => {
+          // success: hide overlay/poster
+          overlay.style.display = "none";
+          poster.style.display = "none";
+          return true;
+        })
+        .catch((err) => {
+          // failed: keep overlay visible so user can tap again
+          overlay.style.display = "flex";
+          // for debugging on mobile we can't see console, but we silently ignore
+          return false;
+        });
+    }
+
+    // primary play button click
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      tryPlay();
+    });
+
+    // also allow tapping anywhere on overlay to try play (user-friendly)
+    overlay.addEventListener("click", (e) => {
+      // if user clicked the overlay background (not the button), still try
+      tryPlay();
+    });
+
+    // Optional: try autoplay once (if browser allows)
+    tryPlay();
+  })();
 </script>
+
 
   
 
