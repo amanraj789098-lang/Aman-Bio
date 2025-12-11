@@ -120,11 +120,76 @@
 </head>
 <body>
 
-  <!-- Background video (use Pages URL so browser serves it as a normal static file) -->
-<video autoplay muted loop playsinline id="bg-video" preload="metadata" poster="aman-logo.jpg">
+<!-- BACKGROUND VIDEO (mobile safe) -->
+<style>
+  #bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none;
+  }
+
+  .video-poster {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('aman-logo.jpg') center/cover no-repeat;
+    z-index: -1;
+  }
+
+  .play-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .play-btn {
+    font-size: 60px;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    padding: 25px 35px;
+    border-radius: 50%;
+    color: white;
+  }
+</style>
+
+<video id="bg-video" muted loop playsinline preload="metadata">
   <source src="https://amanraj789098-lang.github.io/Aman-Bio/bg.mp4" type="video/mp4">
-  Your browser does not support the background video.
-</video> 
+</video>
+
+<div class="video-poster" id="videoPoster"></div>
+
+<div class="play-overlay" id="playOverlay">
+  <button id="playBtn" class="play-btn">►</button>
+</div>
+
+<script>
+  const video = document.getElementById("bg-video");
+  const poster = document.getElementById("videoPoster");
+  const overlay = document.getElementById("playOverlay");
+  const playBtn = document.getElementById("playBtn");
+
+  playBtn.addEventListener("click", () => {
+    video.style.display = "block";
+    video.play();
+    overlay.style.display = "none";
+    poster.style.display = "none";
+  });
+</script>
+
   
 
   <div class="wrap">
