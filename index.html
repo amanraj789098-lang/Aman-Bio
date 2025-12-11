@@ -4,10 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>AMAN — Portfolio</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root{
       --glass-bg: rgba(0,0,0,0.45);
@@ -15,22 +13,20 @@
       --accent: rgba(255,255,255,0.95);
       --muted: rgba(255,255,255,0.75);
       --shadow: 0 14px 40px rgba(0,0,0,0.55);
-      font-family:'Montserrat', system-ui;
+      font-family:'Montserrat',system-ui;
     }
 
     html,body{
-      height:100%;
       margin:0;
+      height:100%;
       background:#000;
       color:var(--accent);
       overflow-x:hidden;
     }
 
-    /* 🔥 Full Background Video */
     #bg-video{
       position:fixed;
-      top:0;
-      left:0;
+      inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
@@ -38,13 +34,12 @@
       filter:blur(8px) brightness(0.55);
     }
 
-    /* overlay */
     body::after{
       content:"";
       position:fixed;
       inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
       z-index:-2;
+      background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.8));
     }
 
     .wrap{
@@ -52,145 +47,106 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:40px 20px;
       text-align:center;
+      padding:40px 20px;
     }
 
-    /* 🔥 Logo */
     .logo{
-      width:120px;
-      height:120px;
-      margin:0 auto 18px;
+      width:130px;
+      height:130px;
       border-radius:50%;
       overflow:hidden;
-      border:2px solid rgba(255,255,255,0.8);
+      border:2px solid rgba(255,255,255,0.9);
+      margin:0 auto 20px;
       box-shadow:0 0 25px rgba(255,255,255,0.6), var(--shadow);
     }
     .logo img{
       width:100%;height:100%;object-fit:cover;
     }
 
-    h1{
-      margin:0;
-      font-size:38px;
-      letter-spacing:4px;
-      font-weight:700;
-    }
+    h1{ font-size:38px; letter-spacing:4px; margin:5px 0; }
+    .subtitle{ font-size:14px; letter-spacing:3px; color:var(--muted); }
 
-    .subtitle{
-      margin-top:6px;
-      font-size:14px;
-      letter-spacing:3px;
-      color:var(--muted);
-    }
-
-    /* Social icons */
     .icons{
-      margin:22px 0 28px;
+      margin:25px 0;
       display:flex;
       justify-content:center;
-      gap:18px;
+      gap:20px;
     }
-
     .icons a{
-      width:50px;
-      height:50px;
+      width:50px;height:50px;
+      background:rgba(0,0,0,0.45);
+      border:1px solid rgba(255,255,255,0.25);
       border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      color:var(--accent);
-      background:rgba(0,0,0,0.45);
-      border:1px solid rgba(255,255,255,0.14);
       font-size:20px;
+      color:white;
       transition:.2s;
     }
-
     .icons a:hover{
-      transform:translateY(-4px) scale(1.05);
-      background:rgba(255,255,255,0.12);
-      box-shadow:var(--shadow);
+      transform:scale(1.1);
+      background:rgba(255,255,255,0.15);
     }
 
-    /* Profile card */
     .card{
-      max-width:640px;
+      max-width:650px;
       margin:0 auto;
-      padding:18px;
-      border-radius:16px;
       background:var(--glass-bg);
       border:1px solid var(--glass-border);
       backdrop-filter:blur(12px);
+      padding:18px;
+      border-radius:16px;
       display:flex;
       gap:16px;
       align-items:center;
     }
 
     .avatar{
-      width:80px;
-      height:80px;
+      width:80px;height:80px;
       border-radius:16px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,0.35);
     }
-    .avatar img{
-      width:100%;height:100%;object-fit:cover;
-    }
+    .avatar img{ width:100%;height:100%;object-fit:cover;}
 
     .meta{text-align:left;}
-    .meta h2{margin:0 0 6px;font-size:20px;}
-    .meta p{margin:0;color:var(--muted);font-size:14px;}
+    .meta h2{ margin:0 0 6px; }
+    .meta p{ margin:2px 0; color:var(--muted); }
 
   </style>
 </head>
 <body>
 
-  <!-- 🎥 Background Video -->
   <video autoplay muted loop playsinline id="bg-video">
-    <source src="https://drive.google.com/uc?export=download&id=1pAKRykiCJ4GZ99XcY_1CP9U_i0vR3QGo" type="video/mp4">
+    <source src="bg.mp4" type="video/mp4">
   </video>
 
   <div class="wrap">
-    <div class="center">
+    <div>
 
-      <!-- 🪪 Logo -->
       <div class="logo">
-        <img src="https://drive.google.com/uc?export=view&id=1ww15hqErrJ-askpeHQ0h490dWnncIfJP" alt="Aman Logo">
+        <img src="aman-logo.jpg">
       </div>
 
       <h1>AMAN</h1>
       <div class="subtitle">Developer × Gamer × Creator</div>
 
-      <!-- Social Icons -->
       <div class="icons">
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/tkd_aman7?igsh=d2pkZ2tmaXAzNGgz" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-
-        <!-- Telegram -->
-        <a href="https://t.me/tdworks" target="_blank">
-          <i class="fab fa-telegram-plane"></i>
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://youtube.com/@broskisnakeytart?si=52aamQR9a-PArAWp" target="_blank">
-          <i class="fab fa-youtube"></i>
-        </a>
-
+        <a href="https://www.instagram.com/tkd_aman7?igsh=d2pkZ2tmaXAzNGgz" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/tdworks" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://youtube.com/@broskisnakeytart?si=52aamQR9a-PArAWp" target="_blank"><i class="fab fa-youtube"></i></a>
       </div>
 
-      <!-- Card -->
       <div class="card">
         <div class="avatar">
-          <img src="https://drive.google.com/uc?export=view&id=1ww15hqErrJ-askpeHQ0h490dWnncIfJP">
+          <img src="aman-logo.jpg">
         </div>
-
         <div class="meta">
           <h2>AMAN (TDWORKS)</h2>
           <p>Developer × Programmer</p>
-          <p style="margin-top:8px;font-size:12px;">Creating digital projects & building skills everyday.</p>
+          <p>Creating digital projects & building skills everyday.</p>
         </div>
       </div>
 
