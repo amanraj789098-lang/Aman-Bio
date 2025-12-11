@@ -119,9 +119,12 @@
 </head>
 <body>
 
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="bg.mp4" type="video/mp4">
-  </video>
+  <!-- Background video (use Pages URL so browser serves it as a normal static file) -->
+<video autoplay muted loop playsinline id="bg-video" preload="metadata" poster="aman-logo.jpg">
+  <source src="https://amanraj789098-lang.github.io/Aman-Bio/bg.mp4" type="video/mp4">
+  Your browser does not support the background video.
+</video> 
+  
 
   <div class="wrap">
     <div>
