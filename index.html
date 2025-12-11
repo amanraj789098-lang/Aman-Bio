@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AMAN — Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    :root{
+      --glass-bg: rgba(0,0,0,0.45);
+      --glass-border: rgba(255,255,255,0.18);
+      --accent: rgba(255,255,255,0.95);
+      --muted: rgba(255,255,255,0.75);
+      --shadow: 0 14px 40px rgba(0,0,0,0.55);
+      font-family:'Montserrat', system-ui;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background:#000;
+      color:var(--accent);
+      overflow-x:hidden;
+    }
+
+    /* 🔥 Full Background Video */
+    #bg-video{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-3;
+      filter:blur(8px) brightness(0.55);
+    }
+
+    /* overlay */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+      z-index:-2;
+    }
+
+    .wrap{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+      text-align:center;
+    }
+
+    /* 🔥 Logo */
+    .logo{
+      width:120px;
+      height:120px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      overflow:hidden;
+      border:2px solid rgba(255,255,255,0.8);
+      box-shadow:0 0 25px rgba(255,255,255,0.6), var(--shadow);
+    }
+    .logo img{
+      width:100%;height:100%;object-fit:cover;
+    }
+
+    h1{
+      margin:0;
+      font-size:38px;
+      letter-spacing:4px;
+      font-weight:700;
+    }
+
+    .subtitle{
+      margin-top:6px;
+      font-size:14px;
+      letter-spacing:3px;
+      color:var(--muted);
+    }
+
+    /* Social icons */
+    .icons{
+      margin:22px 0 28px;
+      display:flex;
+      justify-content:center;
+      gap:18px;
+    }
+
+    .icons a{
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent);
+      background:rgba(0,0,0,0.45);
+      border:1px solid rgba(255,255,255,0.14);
+      font-size:20px;
+      transition:.2s;
+    }
+
+    .icons a:hover{
+      transform:translateY(-4px) scale(1.05);
+      background:rgba(255,255,255,0.12);
+      box-shadow:var(--shadow);
+    }
+
+    /* Profile card */
+    .card{
+      max-width:640px;
+      margin:0 auto;
+      padding:18px;
+      border-radius:16px;
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(12px);
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:80px;
+      height:80px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.35);
+    }
+    .avatar img{
+      width:100%;height:100%;object-fit:cover;
+    }
+
+    .meta{text-align:left;}
+    .meta h2{margin:0 0 6px;font-size:20px;}
+    .meta p{margin:0;color:var(--muted);font-size:14px;}
+
+  </style>
+</head>
+<body>
+
+  <!-- 🎥 Background Video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="https://drive.google.com/uc?export=download&id=1pAKRykiCJ4GZ99XcY_1CP9U_i0vR3QGo" type="video/mp4">
+  </video>
+
+  <div class="wrap">
+    <div class="center">
+
+      <!-- 🪪 Logo -->
+      <div class="logo">
+        <img src="https://drive.google.com/uc?export=view&id=1ww15hqErrJ-askpeHQ0h490dWnncIfJP" alt="Aman Logo">
+      </div>
+
+      <h1>AMAN</h1>
+      <div class="subtitle">Developer × Gamer × Creator</div>
+
+      <!-- Social Icons -->
+      <div class="icons">
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/tkd_aman7?igsh=d2pkZ2tmaXAzNGgz" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/tdworks" target="_blank">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://youtube.com/@broskisnakeytart?si=52aamQR9a-PArAWp" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+
+      </div>
+
+      <!-- Card -->
+      <div class="card">
+        <div class="avatar">
+          <img src="https://drive.google.com/uc?export=view&id=1ww15hqErrJ-askpeHQ0h490dWnncIfJP">
+        </div>
+
+        <div class="meta">
+          <h2>AMAN (TDWORKS)</h2>
+          <p>Developer × Programmer</p>
+          <p style="margin-top:8px;font-size:12px;">Creating digital projects & building skills everyday.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
