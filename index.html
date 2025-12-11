@@ -1,253 +1,231 @@
-<!doctype html>
-<html lang="hi">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AMAN — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    :root{
-      --glass-bg: rgba(0,0,0,0.45);
-      --glass-border: rgba(255,255,255,0.18);
-      --accent: rgba(255,255,255,0.95);
-      --muted: rgba(255,255,255,0.75);
-      --shadow: 0 14px 40px rgba(0,0,0,0.55);
-      font-family:'Montserrat',system-ui;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMAN – Portfolio</title>
 
-    html,body{
-      margin:0;
-      height:100%;
-      background:#000;
-      color:var(--accent);
-      overflow-x:hidden;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    #bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-    
-    }
+    <style>
+        :root {
+            --glass-bg: rgba(0, 0, 0, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --accent: rgba(255, 255, 255, 0.9);
+            --muted: rgba(255, 255, 255, 0.75);
+            --shadow: 0 14px 40px rgba(0,0,0,0.55);
+            font-family: 'Montserrat', system-ui;
+        }
 
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-2;
-      background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.8));
-    }
+        html, body {
+            margin: 0;
+            height: 100%;
+            background: #000;
+            color: var(--accent);
+            overflow-x: hidden;
+        }
 
-    .wrap{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:40px 20px;
-    }
+        /* ------------------- VIDEO SETTINGS ------------------- */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            z-index: -1;
+        }
 
-    .logo{
-      width:130px;
-      height:130px;
-      border-radius:50%;
-      overflow:hidden;
-      border:2px solid rgba(255,255,255,0.9);
-      margin:0 auto 20px;
-      box-shadow:0 0 25px rgba(255,255,255,0.6), var(--shadow);
-    }
-    .logo img{
-      width:100%;height:100%;object-fit:cover;
-    }
+        .video-poster {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url("aman-logo.jpg") center/cover no-repeat;
+        }
 
-    h1{ font-size:38px; letter-spacing:4px; margin:5px 0; }
-    .subtitle{ font-size:14px; letter-spacing:3px; color:var(--muted); }
+        .play-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.55);
+            z-index: 10;
+        }
 
-    .icons{
-      margin:25px 0;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-    }
-    .icons a{
-      width:50px;height:50px;
-      background:rgba(0,0,0,0.45);
-      border:1px solid rgba(255,255,255,0.25);
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:20px;
-      color:white;
-      transition:.2s;
-    }
-    .icons a:hover{
-      transform:scale(1.1);
-      background:rgba(255,255,255,0.15);
-    }
+        .play-btn {
+            font-size: 55px;
+            padding: 25px 34px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.17);
+            border: none;
+            color: white;
+        }
 
-    .card{
-      max-width:650px;
-      margin:0 auto;
-      background:var(--glass-bg);
-      border:1px solid var(--glass-border);
-      backdrop-filter:blur(12px);
-      padding:18px;
-      border-radius:16px;
-      display:flex;
-      gap:16px;
-      align-items:center;
-    }
+        /* ------------------- CONTENT BOX ------------------- */
+        .wrap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
 
-    .avatar{
-      width:80px;height:80px;
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.35);
-    }
-    .avatar img{ width:100%;height:100%;object-fit:cover;}
+        .logo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.9);
+            box-shadow: var(--shadow);
+        }
 
-    .meta{text-align:left;}
-    .meta h2{ margin:0 0 6px; }
-    .meta p{ margin:2px 0; color:var(--muted); }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-  </style>
+        h1 { font-size: 38px; margin: 10px 0; letter-spacing: 3px; }
+        .subtitle { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+
+        .icons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .icons a {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.20);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            transition: .2s;
+        }
+
+        .icons a:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .card {
+            max-width: 650px;
+            margin: 25px auto;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            padding: 18px;
+            border-radius: 16px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .meta h2 { margin: 0; }
+        .meta p { margin: 3px 0; color: var(--muted); }
+    </style>
 </head>
+
 <body>
 
-<!-- BACKGROUND VIDEO (mobile safe) -->
-<style>
-  #bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    display: none;
-  }
+    <!-- VIDEO PLAY SYSTEM -->
+    <video id="bg-video" playsinline muted loop preload="metadata">
+        <source src="bg.mp4" type="video/mp4">
+    </video>
 
-  .video-poster {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('aman-logo.jpg') center/cover no-repeat;
-    z-index: -1;
-  }
+    <div class="video-poster" id="videoPoster"></div>
 
-  .play-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.6);
-  }
+    <div class="play-overlay" id="playOverlay">
+        <button id="playBtn" class="play-btn"><i class="fa-solid fa-play"></i></button>
+    </div>
 
-  .play-btn {
-    font-size: 60px;
-    border: none;
-    background: rgba(255,255,255,0.15);
-    padding: 25px 35px;
-    border-radius: 50%;
-    color: white;
-  }
-</style>
+    <script>
+        const video = document.getElementById("bg-video");
+        const poster = document.getElementById("videoPoster");
+        const overlay = document.getElementById("playOverlay");
+        const playBtn = document.getElementById("playBtn");
 
-<video id="bg-video" muted loop playsinline preload="metadata">
-    <source src="https://amanraj789098-lang.github.io/Aman-Bio/bg.mp4" type="video/mp4">
-</video>
+        function startVideo(){
+            video.style.display = "block";
 
-<div class="video-poster" id="videoPoster"></div>
-
-<div class="play-overlay" id="playOverlay">
-    <button id="playBtn" class="play-btn">▶</button>
-</div>
-
-<script>
-(function(){
-    const video = document.getElementById("bg-video");
-    const poster = document.getElementById("videoPoster");
-    const overlay = document.getElementById("playOverlay");
-    const playBtn = document.getElementById("playBtn");
-
-    video.muted = true;
-    video.playsInline = true;
-
-    function tryPlay() {
-        video.style.display = "block";
-        try { video.load(); } catch(e){}
-        return video.play()
-            .then(() => {
+            video.play()
+            .then(()=>{
                 overlay.style.display = "none";
                 poster.style.display = "none";
-                return true;
             })
-            .catch(() => {
+            .catch(()=>{
                 overlay.style.display = "flex";
-                return false;
             });
-    }
+        }
 
-    playBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        tryPlay();
-    });
+        playBtn.addEventListener("click", () => {
+            startVideo();
+        });
 
-    overlay.addEventListener("click", () => {
-        tryPlay();
-    });
+        overlay.addEventListener("click", () => {
+            startVideo();
+        });
+    </script>
 
-    tryPlay();
-})();
-</script>
+    <!-- CONTENT -->
+    <div class="wrap">
 
-
-
-
-  
-
-  <div class="wrap">
-    <div>
-
-      <div class="logo">
-        <img src="aman-logo.jpg">
-      </div>
-
-      <h1>AMAN</h1>
-      <div class="subtitle">Developer × Gamer × Creator</div>
-
-      <div class="icons">
-        <a href="https://www.instagram.com/tkd_aman7?igsh=d2pkZ2tmaXAzNGgz" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://t.me/tdworks" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://youtube.com/@broskisnakeytart?si=52aamQR9a-PArAWp" target="_blank"><i class="fab fa-youtube"></i></a>
-      </div>
-
-      <div class="card">
-        <div class="avatar">
-          <img src="aman-logo.jpg">
+        <div class="logo">
+            <img src="aman-logo.jpg">
         </div>
-        <div class="meta">
-          <h2>AMAN (TDWORKS)</h2>
-          <p>Developer × Programmer</p>
-          <p>Creating digital projects & building skills everyday.</p>
+
+        <h1>AMAN</h1>
+        <div class="subtitle">Developer × Gamer × Creator</div>
+
+        <div class="icons">
+            <a href="https://www.instagram.com/tkd_aman7?igsh=d2pkZ2tmaXAzNGgz" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/tdworks" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://youtube.com/@broskisnakeytart?si=52aamQR9a-PArAWp" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
-      </div>
+
+        <div class="card">
+            <div class="avatar">
+                <img src="aman-logo.jpg">
+            </div>
+            <div class="meta">
+                <h2>AMAN (TDWORKS)</h2>
+                <p>Developer × Programmer</p>
+                <p>Creating digital projects & building skills everyday.</p>
+            </div>
+        </div>
 
     </div>
-  </div>
 
 </body>
 </html>
